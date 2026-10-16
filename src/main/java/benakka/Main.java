@@ -4,14 +4,22 @@ package benakka;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        Image image = new Image(new int[] {1, 2, 3, 4, 5, 6});
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        image.setFilter(new FilterImpl1());
+        image.filtrer();
+        System.out.println("");
+        image.setFilter(new FilterImpl2());
+        image.filtrer();
+        System.out.println("");
+        image.setCompression(new CompressionImpl());
+        image.compresser();
+
+        System.out.println("\n");
+        FilterAdapter filterAdapter = new FilterAdapter();
+        filterAdapter.setNonStandard(new NonStandardImpl());
+        image.setFilter(filterAdapter);
+        image.filtrer();
+
     }
 }
